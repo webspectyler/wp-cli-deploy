@@ -463,7 +463,7 @@ class WP_Deploy_Command extends WP_CLI_Command {
 				"$c->local_uploads/",
 				"$c->ssh:$path",
 				$c->port,
-				false,
+				true,
 				true,
 				$c->excludes
 			),
@@ -490,7 +490,7 @@ class WP_Deploy_Command extends WP_CLI_Command {
 				"$c->local_themes/",
 				"$c->ssh:$path",
 				$c->port,
-				false,
+				true,
 				true,
 				"$c->excludes"
 			),
@@ -517,7 +517,7 @@ class WP_Deploy_Command extends WP_CLI_Command {
 				"$c->local_plugins/",
 				"$c->ssh:$path",
 				$c->port,
-				false,
+				true,
 				true,
 				"$c->excludes"
 			),
