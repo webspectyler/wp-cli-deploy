@@ -20,7 +20,7 @@ class Helpers {
 
 		$rsync = self::unplaceholdit(
 			/** The command template. */
-			'rsync -rltgoDv%%compress%% -progress -e "ssh -p %%port%%"%%delete%% %%src%% %%dest%% %%exclude%%',
+			'rsync -rltgoDv%%compress%% --progress -e "ssh -p %%port%%"%%delete%% %%src%% %%dest%% %%exclude%%',
 			/** The arguments. */
 			array(
 				'compress' => ( $compress ? 'z' : '' ),
