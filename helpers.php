@@ -10,7 +10,8 @@ class Helpers {
 			'cache',
 			'.DS_Store',
 			'thumbs.db',
-			'.sass-cache'
+			'.sass-cache',
+			'node_modules'
 		);
 
 		$user_excludes = $user_excludes ? explode( ':', (string) $user_excludes ) : array();
@@ -19,7 +20,7 @@ class Helpers {
 
 		$rsync = self::unplaceholdit(
 			/** The command template. */
-			'rsync -av%%compress%% -progress -e "ssh -p %%port%%"%%delete%% %%src%% %%dest%% %%exclude%%',
+			'rsync -rltgoDv%%compress%% -progress -e "ssh -p %%port%%"%%delete%% %%src%% %%dest%% %%exclude%%',
 			/** The arguments. */
 			array(
 				'compress' => ( $compress ? 'z' : '' ),
