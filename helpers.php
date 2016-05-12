@@ -11,7 +11,9 @@ class Helpers {
 			'.DS_Store',
 			'thumbs.db',
 			'.sass-cache',
-			'node_modules'
+			'node_modules',
+			'import-logs*',
+			'events/logs*',
 		);
 
 		$user_excludes = $user_excludes ? explode( ':', (string) $user_excludes ) : array();
