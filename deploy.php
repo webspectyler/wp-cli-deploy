@@ -864,7 +864,7 @@ class WP_Deploy_Command extends WP_CLI_Command {
 				) );
 			} ),
 			'siteurl' => untrailingslashit( Util::trim_url(
-				get_option( 'siteurl' ),
+				get_option( 'home' ),
 				true
 			) ),
 			'object' => (object) array_map( 'untrailingslashit', $constants ),
