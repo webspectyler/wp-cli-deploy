@@ -438,7 +438,7 @@ class WP_Deploy_Command extends WP_CLI_Command {
 
 		$runner->add(
 			"ssh $c->ssh -p $c->port 'cd $c->path;"
-			. " mysql --user=$c->db_user --password=\"$c->db_password\" --host=$c->db_host"
+			. " mysql --user=$c->db_user --password=" . escapeshellarg( $c->db_password ) ." --host=$c->db_host"
 			. " $c->db_name < $server_file'",
 			'Deployed the database on server.',
 			'Failed deploying the db on server.'
@@ -539,7 +539,7 @@ class WP_Deploy_Command extends WP_CLI_Command {
 
 		$runner->add(
 			"ssh $c->ssh -p $c->port 'mkdir -p $c->path; cd $c->path;"
-			. " mysqldump --user=$c->db_user --password=\"" . escapeshellcmd( $c->db_password ) . "\" --host=$c->db_host"
+			. " mysqldump --user=$c->db_user --password=" . escapeshellarg( $c->db_password ) . " --host=$c->db_host"
 			. " --single-transaction"
 			. " --add-drop-table $c->db_name > $server_file'",
 			"Dumped the remote database to '$c->path/$server_file' on the server.",
@@ -575,13 +575,13 @@ class WP_Deploy_Command extends WP_CLI_Command {
 
 		$runner->add(
 			( $c->siteurl != $c->url ),
-			"wp search-replace --network $c->url $c->siteurl",
+			"wp search-replace --all-tables $c->url $c->siteurl",
 			"Replaced '$c->url' with '$c->siteurl' on the imported database."
 		);
 
 		$runner->add(
 			( $c->abspath != $c->wp ),
-			"wp search-replace --network $c->wp $c->abspath",
+			"wp search-replace --all-tables $c->wp $c->abspath",
 			"Replaced '$c->wp' with '$c->abspath' on local database."
 		);
 
@@ -698,13 +698,13 @@ class WP_Deploy_Command extends WP_CLI_Command {
 
 		$runner->add(
 			( $c->siteurl != $c->url ),
-			"wp search-replace --network $c->siteurl $c->url",
+			"wp search-replace --all-tables $c->siteurl $c->url",
 			"Replaced '$c->siteurl' with '$c->url' in local database."
 		);
 
 		$runner->add(
 			( $c->abspath != $c->wp ),
-			"wp search-replace --network $c->abspath $c->wp",
+			"wp search-replace --all-tables $c->abspath $c->wp",
 			"Replaced '$c->abspath' with with '$c->wp' in local database."
 		);
 
