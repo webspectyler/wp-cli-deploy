@@ -99,7 +99,7 @@ you need to define the path to the uploads directory on your server:
     * `%%ENV%%_UPLOADS_PATH`
 
  __`wp deploy pull`__: In order to pull to your server, you need to define the
-sh credentials constants. _These constants are needed whatever the arguments
+ssh credentials constants. _These constants are needed whatever the arguments
 assed to the `pull` subcommand_:
     * `%%ENV%%_USER`
     * `%%ENV%%_HOST`
