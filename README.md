@@ -1,13 +1,13 @@
 ## Project maintainers welcomed
 *April, 2016*
 
-It just so happened that in the last year, my development interests shifted away from WordPress. As such, I ended up not writing a single line of PHP in over twelve months. 
+It just so happened that in the last year, my development interests shifted away from WordPress. As such, I ended up not writing a single line of PHP in over twelve months.
 
 I believe that the tools we build are best when we use them ourselves, and the reality is I don't use `wp-cli-deploy` anymore, so I decided to hand off maintenance of this project to someone else.
 
 If you’re interested in the gig, ping [me on Twitter](http://twitter.com/ciobi) and we can take it from there.
 
-## WP-Cli Deploy 
+## WP-Cli Deploy
 
 __Current Version__: 1.0.0 (stable), 1.1.0-beta (in dev)
 
@@ -56,7 +56,7 @@ __Examples__
     # Dump the local db with the siteurl replaced
     wp deploy dump andrew
 
-### Installation
+### Install Locally
 
 * Clone this repository in your WordPress directory.
 * Create a `wp-cli.yml` file in the root of you WordPress directory with:
@@ -65,6 +65,27 @@ require: "relative/path/to/deploy.php"
 ```
 * You can now use the deploy command. Type `wp help deploy` to see if it
 works.
+
+### Install Globally
+
+* Clone this repository into your `~/.wp-cli/commands/` directory so that the path
+to `deploy.php` is:
+```
+~/.wp-cli/commands/deploy/deploy.php
+```
+
+* Edit your `~/.wp-cli/config.yml` file to make sure it has the following:
+
+```yml
+apache_modules:
+  - mod_rewrite
+require:
+  - "commands/deploy/deploy.php"
+```
+
+* You can now use the deploy command from any WordPress directory.
+Type `wp help deploy` to see if it works.
+
 
 ### Configuration
 
