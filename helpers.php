@@ -14,6 +14,7 @@ class Helpers {
 			'node_modules',
 			'import-logs*',
 			'events/logs*',
+			'env.json',
 		);
 
 		$user_excludes = $user_excludes ? explode( ':', (string) $user_excludes ) : array();
